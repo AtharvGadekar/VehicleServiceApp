@@ -17,6 +17,8 @@ public class ShopAddress {
 	
 	private long pincode;
 
+	
+	
 	public long getSaid() {
 		return said;
 	}

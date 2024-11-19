@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class MechanicShop {
@@ -17,6 +18,7 @@ public class MechanicShop {
 	
 	private String shopname;
 	
+	@OneToOne
 	private ShopAddress shopaddress;
 	
 	private long contactno;
@@ -24,6 +26,8 @@ public class MechanicShop {
 	@OneToMany(mappedBy = "shop")
 	private List<Service> services;
 
+	
+	
 	public long getId() {
 		return id;
 	}

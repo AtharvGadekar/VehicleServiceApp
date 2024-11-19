@@ -21,6 +21,8 @@ public class Service {
 	@ManyToOne()
 	private MechanicShop shop;
 
+	
+	
 	public long getSid() {
 		return sid;
 	}

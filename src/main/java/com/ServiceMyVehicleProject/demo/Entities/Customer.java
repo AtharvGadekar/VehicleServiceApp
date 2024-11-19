@@ -4,21 +4,24 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long cid;
+	private Long cid;
 	
-	private String name;
+	private String cname;
 	
-	private long cmobno;
+	private Long cmobno;
 	
-	private String email;
+	private String cemail;
 	
+	@OneToOne
 	private CustomerAddress caddress;
 
+	
 	public long getCid() {
 		return cid;
 	}
@@ -28,11 +31,11 @@ public class Customer {
 	}
 
 	public String getName() {
-		return name;
+		return cname;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.cname = name;
 	}
 
 	public long getCmobno() {
@@ -44,11 +47,11 @@ public class Customer {
 	}
 
 	public String getEmail() {
-		return email;
+		return cemail;
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		this.cemail = email;
 	}
 
 	public CustomerAddress getCaddress() {
@@ -61,16 +64,16 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [cid=" + cid + ", name=" + name + ", cmobno=" + cmobno + ", email=" + email + ", caddress="
+		return "Customer [cid=" + cid + ", name=" + cname + ", cmobno=" + cmobno + ", email=" + cemail + ", caddress="
 				+ caddress + "]";
 	}
 
 	public Customer(long cid, String name, long cmobno, String email, CustomerAddress caddress) {
 		super();
 		this.cid = cid;
-		this.name = name;
+		this.cname = name;
 		this.cmobno = cmobno;
-		this.email = email;
+		this.cemail = email;
 		this.caddress = caddress;
 	}
 

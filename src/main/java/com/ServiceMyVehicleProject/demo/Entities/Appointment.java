@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Appointment {
@@ -14,12 +16,16 @@ public class Appointment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long aid;
 	
+	@OneToOne
 	private Customer customer;
 	
+	@OneToOne
 	private MechanicShop shop;
 	
+	@OneToOne
 	private Vehicle vehicle;
 	
+	@OneToMany
 	private List<Service> services;
 	
 	private String dateAndTime;

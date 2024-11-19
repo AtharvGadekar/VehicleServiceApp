@@ -20,6 +20,8 @@ public class Vehicle {
 	private long vyear;
 	
 	private String vin;
+	
+	
 
 	public long getVid() {
 		return vid;
