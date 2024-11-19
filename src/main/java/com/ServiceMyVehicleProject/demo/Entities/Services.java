@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Service {
+public class Services {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long sid;
@@ -69,7 +69,7 @@ public class Service {
 				+ ", shop=" + shop + "]";
 	}
 
-	public Service(long sid, String sname, String sdescription, String scost, MechanicShop shop) {
+	public Services(long sid, String sname, String sdescription, String scost, MechanicShop shop) {
 		super();
 		this.sid = sid;
 		this.sname = sname;
@@ -78,7 +78,7 @@ public class Service {
 		this.shop = shop;
 	}
 
-	public Service() {
+	public Services() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

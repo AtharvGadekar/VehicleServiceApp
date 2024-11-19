@@ -26,7 +26,7 @@ public class Appointment {
 	private Vehicle vehicle;
 	
 	@OneToMany
-	private List<Service> services;
+	private List<Services> services;
 	
 	private String dateAndTime;
 
@@ -62,11 +62,11 @@ public class Appointment {
 		this.vehicle = vehicle;
 	}
 
-	public List<Service> getServices() {
+	public List<Services> getServices() {
 		return services;
 	}
 
-	public void setServices(List<Service> services) {
+	public void setServices(List<Services> services) {
 		this.services = services;
 	}
 
@@ -84,7 +84,7 @@ public class Appointment {
 				+ ", services=" + services + ", dateAndTime=" + dateAndTime + "]";
 	}
 
-	public Appointment(long aid, Customer customer, MechanicShop shop, Vehicle vehicle, List<Service> services,
+	public Appointment(long aid, Customer customer, MechanicShop shop, Vehicle vehicle, List<Services> services,
 			String dateAndTime) {
 		super();
 		this.aid = aid;

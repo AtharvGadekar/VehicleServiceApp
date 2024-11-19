@@ -9,7 +9,7 @@ import com.ServiceMyVehicleProject.demo.Dao.MechanicShopRepo;
 import com.ServiceMyVehicleProject.demo.Entities.MechanicShop;
 
 @Service
-public class ShopService {
+public class MechanicShopService {
 	
 	@Autowired
 	private MechanicShopRepo shopdao;

@@ -24,7 +24,7 @@ public class MechanicShop {
 	private long contactno;
 	
 	@OneToMany(mappedBy = "shop")
-	private List<Service> services;
+	private List<Services> services;
 
 	
 	
@@ -60,11 +60,11 @@ public class MechanicShop {
 		this.contactno = contactno;
 	}
 
-	public List<Service> getServices() {
+	public List<Services> getServices() {
 		return services;
 	}
 
-	public void setServices(List<Service> services) {
+	public void setServices(List<Services> services) {
 		this.services = services;
 	}
 
@@ -74,7 +74,7 @@ public class MechanicShop {
 				+ contactno + ", services=" + services + "]";
 	}
 
-	public MechanicShop(long id, String shopname, ShopAddress shopaddress, long contactno, List<Service> services) {
+	public MechanicShop(long id, String shopname, ShopAddress shopaddress, long contactno, List<Services> services) {
 		super();
 		this.id = id;
 		this.shopname = shopname;
