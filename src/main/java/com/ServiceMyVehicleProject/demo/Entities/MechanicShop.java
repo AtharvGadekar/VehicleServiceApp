@@ -2,7 +2,10 @@ package com.ServiceMyVehicleProject.demo.Entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,6 +27,7 @@ public class MechanicShop {
 	private long contactno;
 	
 	@OneToMany(mappedBy = "shop")
+	@JsonManagedReference
 	private List<Services> services;
 
 	

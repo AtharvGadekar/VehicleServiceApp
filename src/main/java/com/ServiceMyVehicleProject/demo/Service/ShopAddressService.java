@@ -15,4 +15,17 @@ public class ShopAddressService {
 	public ShopAddress getShopAddressById(long id) {
 		return shopadddao.findById(id).orElse(null);
 	}
+	
+	public ShopAddress updateShopAddress(ShopAddress shop) {
+		return shopadddao.save(shop);
+	}
+	
+	public ShopAddress createShopAddress(ShopAddress shopadd) {
+		return shopadddao.save(shopadd);
+	}
+	
+	public Boolean deleteShopAddress(long id) {
+		shopadddao.deleteById(id);
+		return true;
+	}
 }

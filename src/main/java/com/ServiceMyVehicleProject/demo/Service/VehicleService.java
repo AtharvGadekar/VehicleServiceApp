@@ -1,5 +1,7 @@
 package com.ServiceMyVehicleProject.demo.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,10 @@ public class VehicleService {
 	@Autowired
 	private VehicleRepo vehicleDao;
 	
+	public List<Vehicle> getAllVehicle(){
+		return vehicleDao.findAll();
+	}
+	
 	public Vehicle getVehicleById(long id) {
 		return vehicleDao.findById(id).orElse(null);
 	}
@@ -20,7 +26,8 @@ public class VehicleService {
 		return vehicleDao.save(v);
 	}
 	
-	public Vehicle upadateVehicle(Vehicle v) {
+	public Vehicle upadateVehicle(Vehicle v,long id) {
+		v.setVid(id);
 		return vehicleDao.save(v);
 	}
 	
