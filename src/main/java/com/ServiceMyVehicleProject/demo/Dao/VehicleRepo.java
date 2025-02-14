@@ -7,4 +7,5 @@ import com.ServiceMyVehicleProject.demo.Entities.Vehicle;
 @Repository
 public interface VehicleRepo extends JpaRepository<Vehicle, Long>{
 
+	public Vehicle findByVlicenseplate(String number);
 }

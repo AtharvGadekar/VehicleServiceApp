@@ -26,7 +26,6 @@ public class MechanicShopService {
 	}
 	
 	public MechanicShop createShop(MechanicShop shop) {
-		shopaddser.createShopAddress(shop.getShopaddress());
 		return shopdao.save(shop);
 	}
 	

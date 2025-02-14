@@ -21,7 +21,10 @@ public class MechanicShop {
 	
 	private String shopname;
 	
-	@OneToOne
+	private String shopdescription;
+	
+	@OneToOne(mappedBy = "shop")
+	@JsonManagedReference
 	private ShopAddress shopaddress;
 	
 	private long contactno;
@@ -29,9 +32,16 @@ public class MechanicShop {
 	@OneToMany(mappedBy = "shop")
 	@JsonManagedReference
 	private List<Services> services;
+	
+	
+	public String getShopdescription() {
+		return shopdescription;
+	}
 
-	
-	
+	public void setShopdescription(String shopdescription) {
+		this.shopdescription = shopdescription;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -72,19 +82,23 @@ public class MechanicShop {
 		this.services = services;
 	}
 
-	@Override
-	public String toString() {
-		return "MechanicShop [id=" + id + ", shopname=" + shopname + ", shopaddress=" + shopaddress + ", contactno="
-				+ contactno + ", services=" + services + "]";
-	}
+	
 
-	public MechanicShop(long id, String shopname, ShopAddress shopaddress, long contactno, List<Services> services) {
+	public MechanicShop(long id, String shopname, String shopdescription, ShopAddress shopaddress, long contactno,
+			List<Services> services) {
 		super();
 		this.id = id;
 		this.shopname = shopname;
+		this.shopdescription = shopdescription;
 		this.shopaddress = shopaddress;
 		this.contactno = contactno;
 		this.services = services;
+	}
+
+	@Override
+	public String toString() {
+		return "MechanicShop [id=" + id + ", shopname=" + shopname + ", shopdescription=" + shopdescription
+				+ ", shopaddress=" + shopaddress + ", contactno=" + contactno + ", services=" + services + "]";
 	}
 
 	public MechanicShop() {

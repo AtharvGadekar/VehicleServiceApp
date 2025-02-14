@@ -1,9 +1,14 @@
 package com.ServiceMyVehicleProject.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class CustomerAddress {
@@ -18,6 +23,21 @@ public class CustomerAddress {
 	private String city;
 	
 	private long pincode;
+	
+	@OneToOne()
+	@JsonBackReference
+	@JoinColumn(nullable = false)
+	private Customer customer;
+	
+	
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
 	public long getId() {
 		return id;
@@ -59,19 +79,21 @@ public class CustomerAddress {
 		this.pincode = pincode;
 	}
 
-	@Override
-	public String toString() {
-		return "CustomerAddress [id=" + id + ", address=" + address + ", areaname=" + areaname + ", city=" + city
-				+ ", pincode=" + pincode + "]";
-	}
 
-	public CustomerAddress(long id, String address, String areaname, String city, long pincode) {
+	public CustomerAddress(long id, String address, String areaname, String city, long pincode, Customer customer) {
 		super();
 		this.id = id;
 		this.address = address;
 		this.areaname = areaname;
 		this.city = city;
 		this.pincode = pincode;
+		this.customer = customer;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerAddress [id=" + id + ", address=" + address + ", areaname=" + areaname + ", city=" + city
+				+ ", pincode=" + pincode + ", customer=" + customer + "]";
 	}
 
 	public CustomerAddress() {

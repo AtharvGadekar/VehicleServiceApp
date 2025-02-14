@@ -1,9 +1,12 @@
 package com.ServiceMyVehicleProject.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class ShopAddress {
@@ -16,9 +19,21 @@ public class ShopAddress {
 	private String city;
 	
 	private long pincode;
+	
+	@OneToOne
+	@JsonBackReference
+	private MechanicShop shop;
 
 	
 	
+	public MechanicShop getShop() {
+		return shop;
+	}
+
+	public void setShop(MechanicShop shop) {
+		this.shop = shop;
+	}
+
 	public long getSaid() {
 		return said;
 	}
@@ -51,18 +66,20 @@ public class ShopAddress {
 		this.pincode = pincode;
 	}
 
-	@Override
-	public String toString() {
-		return "ShopAddress [said=" + said + ", shopAddress=" + shopAddress + ", city=" + city + ", pincode=" + pincode
-				+ "]";
-	}
-
-	public ShopAddress(long said, String shopAddress, String city, long pincode) {
+	
+	public ShopAddress(long said, String shopAddress, String city, long pincode, MechanicShop shop) {
 		super();
 		this.said = said;
 		this.shopAddress = shopAddress;
 		this.city = city;
 		this.pincode = pincode;
+		this.shop = shop;
+	}
+
+	@Override
+	public String toString() {
+		return "ShopAddress [said=" + said + ", shopAddress=" + shopAddress + ", city=" + city + ", pincode=" + pincode
+				+ ", shop=" + shop + "]";
 	}
 
 	public ShopAddress() {

@@ -21,29 +21,36 @@ public class CustomerService {
 		return custdao.findById(id).orElse(null);
 	}
 	
+	public Customer getCustomerByEmailAndPassword(String email,String password) {
+		Customer cust = custdao.findByCemail(email);
+		if(cust.getCpassword().equals(password)) {
+			return cust;
+		}
+		return null;
+	}
+	
 	public List<Customer> getAllCustomer(){
 		return custdao.findAll();
 	}
 	
 	public Customer createCustomer(Customer cust) {
-		custaddser.createCustAddress(cust.getCaddress());
+//		custaddser.createCustAddress(cust.getCaddress());
 		return custdao.save(cust);
 	}
 	
 	public Customer updateCustomer(Customer cust) {
-		custaddser.updateCustAddress(cust.getCaddress());
-		Customer customer = custdao.findById(cust.getCid()).orElse(null);
-		
-		if(customer==null) {
-			return custdao.save(cust);
-		}else {
-			customer.setCmobno(cust.getCmobno());
-			customer.setEmail(cust.getEmail());
-			customer.setName(cust.getName());
-			return custdao.save(customer);
-		}
+//		custaddser.updateCustAddress(cust.getCaddress());
+//		Customer customer = custdao.findById(cust.getCid()).orElse(null);
+//		
+
+		return custdao.save(cust);
 	}
-	
+	public Customer findbyEmail(String email) {
+		return custdao.findByCemail(email);
+	}
+	public Customer findbyName(String name) {
+		return custdao.findByCname(name);
+	}
 	public void deleteCustomer(long id) {
 		Customer cust = custdao.findById(id).orElse(null);
 		if(cust==null) {

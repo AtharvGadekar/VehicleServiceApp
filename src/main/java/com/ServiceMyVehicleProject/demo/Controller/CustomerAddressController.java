@@ -21,7 +21,7 @@ public class CustomerAddressController {
 	private CustomerAddressService custaddser;
 	
 	@GetMapping("/{id}")
-	public CustomerAddress getCustomerAddressById(long id) {
+	public CustomerAddress getCustomerAddressById(@PathVariable("id")long id) {
 		return custaddser.getCustomerAddressById(id);
 	}
 	

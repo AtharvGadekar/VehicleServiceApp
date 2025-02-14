@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ServiceMyVehicleProject.demo.Dao.MechanicShopRepo;
 import com.ServiceMyVehicleProject.demo.Dao.ServicesRepo;
 import com.ServiceMyVehicleProject.demo.Entities.MechanicShop;
 import com.ServiceMyVehicleProject.demo.Entities.Services;
@@ -16,7 +17,7 @@ public class ServicesService {
 	private ServicesRepo serdao;
 	
 	@Autowired
-	private MechanicShopService shopser;
+	private MechanicShopRepo shopdao;
 	
 //	public Services getServiceById(long id) {
 //		return serdao.findById(id).orElse(null);
@@ -39,8 +40,8 @@ public class ServicesService {
 		return serdao.findAll();
 	}
 	
-	public Services createService(Services ser, long shopid) {
-		MechanicShop shop = shopser.getShopById(shopid);
+	public Services createService(Services ser) {
+		MechanicShop shop = shopdao.findById(ser.getShop().getId()).orElse(null);
 		ser.setShop(shop);
 		return serdao.save(ser);
 	}
@@ -54,7 +55,6 @@ public class ServicesService {
 		}else {
 			service.setScost(ser.getScost());
 			service.setSdescription(ser.getSdescription());
-			service.setShop(shopser.getShopById(shopid));
 			service.setSname(ser.getSname());
 			return serdao.save(service);
 		}

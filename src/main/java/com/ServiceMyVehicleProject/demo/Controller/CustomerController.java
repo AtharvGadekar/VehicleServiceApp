@@ -27,6 +27,14 @@ public class CustomerController {
 		return custser.getCustomerById(id);
 	}
 	
+	@GetMapping("/mail/{mail}")
+	public Customer getCustomerbyEmail(@PathVariable("mail")String mail) {
+		return custser.findbyEmail(mail);
+	}
+	@GetMapping("/name/{name}")
+	public Customer getCustomerByName(@PathVariable("name")String name) {
+		return custser.findbyName(name);
+	}
 	@GetMapping
 	public List<Customer> getAllCustomers(){
 		return custser.getAllCustomer();

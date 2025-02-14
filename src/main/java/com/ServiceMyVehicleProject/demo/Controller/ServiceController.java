@@ -33,9 +33,9 @@ public class ServiceController {
 		return serviceser.getAllServices();
 	}
 	
-	@PostMapping("/{id}")
-	public Services createService(@PathVariable("id") long shopid, @RequestBody Services ser) {
-		return serviceser.createService(ser,shopid);
+	@PostMapping()
+	public Services createService(@RequestBody Services ser) {
+		return serviceser.createService(ser);
 	}
 	
 	@PutMapping("/{shopid}/{serviceid}")

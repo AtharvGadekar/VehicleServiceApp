@@ -8,4 +8,6 @@ import com.ServiceMyVehicleProject.demo.Entities.Customer;
 @Repository
 public interface CustomerRepo extends JpaRepository<Customer, Long>{
 
+	public Customer findByCemail(String mail);
+	public Customer findByCname(String name);
 }

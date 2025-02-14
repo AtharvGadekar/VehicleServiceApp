@@ -1,13 +1,18 @@
 package com.ServiceMyVehicleProject.demo.Entities;
 
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class Customer {
+public class Customer{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long cid;
@@ -17,11 +22,34 @@ public class Customer {
 	private Long cmobno;
 	
 	private String cemail;
+	 
+	private String cpassword;
 	
-	@OneToOne
+	@JsonManagedReference
+	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
 	private CustomerAddress caddress;
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	public List<Vehicle> vehicle;
 
 	
+	public String getCpassword() {
+		return cpassword;
+	}
+
+	public void setCpassword(String cpassword) {
+		this.cpassword = cpassword;
+	}
+
+	public List<Vehicle> getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(List<Vehicle> vehicle) {
+		this.vehicle = vehicle;
+	}
+
 	public long getCid() {
 		return cid;
 	}
@@ -61,26 +89,31 @@ public class Customer {
 	public void setCaddress(CustomerAddress caddress) {
 		this.caddress = caddress;
 	}
+	
+
+	public Customer(Long cid, String cname, Long cmobno, String cemail, String cpassword, CustomerAddress caddress,
+			List<Vehicle> vehicle) {
+		super();
+		this.cid = cid;
+		this.cname = cname;
+		this.cmobno = cmobno;
+		this.cemail = cemail;
+		this.cpassword = cpassword;
+		this.caddress = caddress;
+		this.vehicle = vehicle;
+	}
 
 	@Override
 	public String toString() {
-		return "Customer [cid=" + cid + ", name=" + cname + ", cmobno=" + cmobno + ", email=" + cemail + ", caddress="
-				+ caddress + "]";
-	}
-
-	public Customer(long cid, String name, long cmobno, String email, CustomerAddress caddress) {
-		super();
-		this.cid = cid;
-		this.cname = name;
-		this.cmobno = cmobno;
-		this.cemail = email;
-		this.caddress = caddress;
+		return "Customer [cid=" + cid + ", cname=" + cname + ", cmobno=" + cmobno + ", cemail=" + cemail
+				+ ", cpassword=" + cpassword + ", caddress=" + caddress + ", vehicle=" + vehicle + "]";
 	}
 
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	
 	
 }
